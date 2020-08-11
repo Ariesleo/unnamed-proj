@@ -1,59 +1,101 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="container">
+    <!--below is the floating window for youtube link-->
+    <div id="floatwindow">
+      <div class="form-group">
+        <label for="inputEmail">Enter Youtube Video URL:</label
+        ><button @click="closeWindow()" class="btncross">
+          Cancle
+          <i class="fas fa-times"></i>
+        </button>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          placeholder="paste your link here"
+        />
+      </div>
+    </div>
+    <!--floating window ends here-->
+    <button id="btnchose" type="button" class="btn btn-primary">
+      <input type="file" accept="audio/*, video/*" name="" id="file" hidden />
+      <label for="file" id="selector"
+        ><i id="fontupload" class="fas fa-upload"></i><br />
+        Choose audio(or video) file</label
+      >
+    </button>
+    <br />
+    <!--below button for youtube link button-->
+    <button
+      id="btnyou"
+      @click="openWindow()"
+      type="button"
+      class="btn btn-primary"
+      style="margin-top: 5px; width: 230px;"
+    >
+      Or YouTube Video
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String,
+  methods: {
+    openWindow() {
+      const x = document.getElementById('floatwindow');
+      // eslint-disable-next-line no-multi-assign
+      const y = (x.style.display = 'block');
+      return y;
+    },
+    closeWindow() {
+      const x = document.getElementById('floatwindow');
+      // eslint-disable-next-line no-multi-assign
+      const y = (x.style.display = 'none');
+      return y;
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.container {
+  margin-top: 20px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+#btnchose {
+  width: 230px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+#btnchose:hover,
+#btnyou:hover {
+  transform: scale(1.08);
+  box-shadow: 2px 2px 10px rgba(92, 91, 91, 0.89);
+  transition: 0.5s ease;
 }
-a {
-  color: #42b983;
+/*below is the css for FLOATING WINDOW for youtube URL */
+#floatwindow {
+  color: aliceblue;
+  margin-top: 10px;
+  width: 400px;
+  height: 88px;
+  background-color: rgba(17, 16, 16, 0.897);
+  border-radius: 5px;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-bottom: 10px;
 }
+
+.btncross {
+  box-shadow: none !important;
+  border: none;
+  background-color: rgba(46, 44, 44, 0.411);
+  color: rgba(143, 146, 148, 0.521);
+  float: right;
+}
+.btncross:hover {
+  color: aliceblue;
+}
+/*FLOATING WINDOW ends HERE */
 </style>
