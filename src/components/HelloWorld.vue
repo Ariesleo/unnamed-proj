@@ -6,7 +6,7 @@
         <label for="inputEmail">Enter Youtube Video URL:</label
         ><button @click="closeWindow()" class="btncross">
           Cancle
-          <i class="fas fa-times"></i>
+          <fa-icon class="fa" :icon="['fas', 'times']" />
         </button>
         <input
           type="email"
@@ -17,17 +17,17 @@
       </div>
     </div>
     <!--floating window ends here-->
-    <button id="btnchose" type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary">
       <input type="file" accept="audio/*, video/*" name="" id="file" hidden />
       <label for="file" id="selector"
-        ><i id="fontupload" class="fas fa-upload"></i><br />
+        ><i id="fontupload" class="fas fa-upload"></i>
+        <fa-icon class="fa" :icon="['fas', 'upload']" /><br />
         Choose audio(or video) file</label
       >
     </button>
     <br />
     <!--below button for youtube link button-->
     <button
-      id="btnyou"
       @click="openWindow()"
       type="button"
       class="btn btn-primary"
@@ -63,11 +63,10 @@ export default {
 .container {
   margin-top: 20px;
 }
-#btnchose {
+.btn {
   width: 230px;
 }
-#btnchose:hover,
-#btnyou:hover {
+.btn:hover {
   transform: scale(1.08);
   box-shadow: 2px 2px 10px rgba(92, 91, 91, 0.89);
   transition: 0.5s ease;
@@ -88,7 +87,6 @@ export default {
 }
 
 .btncross {
-  box-shadow: none !important;
   border: none;
   background-color: rgba(46, 44, 44, 0.411);
   color: rgba(143, 146, 148, 0.521);

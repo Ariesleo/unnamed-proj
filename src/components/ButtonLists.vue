@@ -2,13 +2,13 @@
   <!--Button import and Export STARTS here-->
   <div class="btnlst">
     <button class="sbutton-imp">
-      <i id="icon-imp" class="fa fa-sign-in"></i>
-      <span style="font-weight: lighter;">import</span></button
+      <fa-icon class="fa" :icon="['fas', 'sign-in-alt']" />
+        <span> Import</span></button
     ><br />
 
     <button class="sbutton-exp">
-      <i id="icon-imp" class="fa fa-share-square-o"></i>
-      <span>export</span>
+      <fa-icon class="fa" :icon="['fas', 'share-square']" />
+      <span> Export</span>
     </button>
   </div>
   <!--Button import and Export ENDS here-->
@@ -23,22 +23,25 @@
 }
 .sbutton-imp,
 .sbutton-exp {
-  box-shadow: none !important;
+  box-shadow: none;
   border: none;
-  background-color: rgba(228, 225, 225, 0.911);
+  border-radius: 5px;
+  background-color: white;
 }
 .sbutton-exp:hover,
 .sbutton-imp:hover {
   transform: scale(1.2);
-  box-shadow: 2px 2px 10px rgba(92, 91, 91, 0.89);
+  box-shadow: 5px 5px 10px rgba(92, 91, 91, 0.89);
   transition: 0.5s ease;
 }
-#icon-imp {
+.fa {
   border: 1px solid rgba(97, 92, 92, 0.911);
   border-radius: 3px;
   width: 25px;
   height: 29px;
-  padding-top: 5px;
   margin-top: 5px;
+  margin-bottom: 0px;
+  color: rgba(0, 0, 0, 0.89);
+  font-size: 20px;
 }
 </style>
