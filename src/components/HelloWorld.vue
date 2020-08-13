@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!--below is the floating window for youtube link-->
-    <div id="floatwindow">
+    <div class="floatwindow" ref="floatWindow">
       <div class="form-group">
         <label for="inputEmail">Enter Youtube Video URL:</label
         ><button @click="closeWindow()" class="btncross">
@@ -43,16 +43,14 @@ export default {
   name: 'HelloWorld',
   methods: {
     openWindow() {
-      const x = document.getElementById('floatwindow');
-      // eslint-disable-next-line no-multi-assign
-      const y = (x.style.display = 'block');
-      return y;
+      const x = this.$refs.floatWindow;
+      x.style.display = 'block';
+      return x;
     },
     closeWindow() {
-      const x = document.getElementById('floatwindow');
-      // eslint-disable-next-line no-multi-assign
-      const y = (x.style.display = 'none');
-      return y;
+      const x = this.$refs.floatWindow;
+      x.style.display = 'none';
+      return x;
     },
   },
 };
@@ -72,7 +70,7 @@ export default {
   transition: 0.5s ease;
 }
 /*below is the css for FLOATING WINDOW for youtube URL */
-#floatwindow {
+.floatwindow {
   color: aliceblue;
   margin-top: 10px;
   width: 400px;
