@@ -4,7 +4,7 @@
     <div class="floatwindow" ref="floatWindow">
       <div class="form-group">
         <label for="inputEmail">Enter Youtube Video URL:</label
-        ><button @click="closeWindow()" class="btncross">
+        ><button @click="closeWindow" class="btncross">
           Cancle
           <fa-icon class="fa" :icon="['fas', 'times']" />
         </button>
@@ -28,7 +28,7 @@
     <br />
     <!--below button for youtube link button-->
     <button
-      @click="openWindow()"
+      @click="openWindow"
       type="button"
       class="btn btn-primary"
       style="margin-top: 5px; width: 230px;"
