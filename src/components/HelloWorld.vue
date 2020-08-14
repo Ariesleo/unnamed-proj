@@ -1,5 +1,13 @@
 <template>
-  <div class="container">
+<!-- eslint-disable max-len -->
+
+  <div class="container" >
+    <div id="mycontainer" ref="myContainer">
+        <div class="c-video">
+            <video class='video' id='match' ref="Match" controls></video>
+        </div>
+      </div>
+
     <!--below is the floating window for youtube link-->
     <div class="floatwindow" ref="floatWindow" v-if="isFloatWindowOpen">
       <div class="form-group">
@@ -18,7 +26,7 @@
     </div>
     <!--floating window ends here-->
     <button type="button" class="btn btn-primary">
-      <input type="file" accept="audio/*, video/*" name="" id="file" hidden />
+    <input type="file" accept="audio/*, video/*" name="" @change="videoclick(this)" id="file" hidden />
       <label for="file" id="selector"
         ><i id="fontupload" class="fas fa-upload"></i>
         <fa-icon class="fa" :icon="['fas', 'upload']" /><br />
@@ -28,7 +36,6 @@
     <br />
     <!--below button for youtube link button-->
     <button
-      @click="openWindow"
       type="button"
       class="btn btn-primary"
       style="margin-top: 5px; width: 230px;"
@@ -53,6 +60,13 @@ export default {
     closeWindow() {
       this.isFloatWindowOpen = false;
     },
+    videoclick(obj) {
+      const reader = new FileReader();
+      reader.onload = (e) => this.$emit('load', e.target.result);
+      this.$refs.myContainer.style.display = 'inline';
+      reader.readAsDataURL(obj.files[0]);
+    },
+
   },
 };
 </script>
@@ -61,6 +75,23 @@ export default {
 <style scoped>
 .container {
   margin-top: 20px;
+}
+
+#mycontainer {
+    display: none;
+    background:#ccc;
+    height: 0vh;
+}
+.video{
+    width: 90%;
+}
+
+.c-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 370px;
 }
 .btn {
   width: 230px;
