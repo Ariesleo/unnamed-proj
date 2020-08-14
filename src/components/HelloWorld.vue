@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <!--below is the floating window for youtube link-->
-    <div class="floatwindow" ref="floatWindow">
+    <div class="floatwindow" ref="floatWindow" v-if="isFloatWindowOpen">
       <div class="form-group">
         <label for="inputEmail">Enter Youtube Video URL:</label
         ><button @click="closeWindow" class="btncross">
-          Cancle
+          Cancel
           <fa-icon class="fa" :icon="['fas', 'times']" />
         </button>
         <input
@@ -41,16 +41,17 @@
 <script>
 export default {
   name: 'HelloWorld',
+  data() {
+    return {
+      isFloatWindowOpen: false,
+    };
+  },
   methods: {
     openWindow() {
-      const x = this.$refs.floatWindow;
-      x.style.display = 'block';
-      return x;
+      this.isFloatWindowOpen = true;
     },
     closeWindow() {
-      const x = this.$refs.floatWindow;
-      x.style.display = 'none';
-      return x;
+      this.isFloatWindowOpen = false;
     },
   },
 };
@@ -77,7 +78,6 @@ export default {
   height: 88px;
   background-color: rgba(17, 16, 16, 0.897);
   border-radius: 5px;
-  display: none;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
