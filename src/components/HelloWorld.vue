@@ -2,9 +2,9 @@
 <!-- eslint-disable max-len -->
 
   <div class="container" >
-    <div id="mycontainer" ref="myContainer">
+    <div id="mycontainer" ref="myContainer" v-if="isVideoVisible">
         <div class="c-video">
-            <video class='video' id='match' ref="Match" controls></video>
+            <video class='video' id='match' ref="Match" :src="videoSrc" controls></video>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
     </div>
     <!--floating window ends here-->
     <button type="button" class="btn btn-primary">
-    <input type="file" accept="audio/*, video/*" name="" @change="videoclick(this)" id="file" hidden />
+    <input type="file" accept="audio/*, video/*" name="" @change="videoclick" id="file" hidden />
       <label for="file" id="selector"
         ><i id="fontupload" class="fas fa-upload"></i>
         <fa-icon class="fa" :icon="['fas', 'upload']" /><br />
@@ -51,6 +51,8 @@ export default {
   data() {
     return {
       isFloatWindowOpen: false,
+      isVideoVisible: false,
+      videoSrc: '',
     };
   },
   methods: {
@@ -60,11 +62,14 @@ export default {
     closeWindow() {
       this.isFloatWindowOpen = false;
     },
-    videoclick(obj) {
+    videoclick(event) {
+      this.isVideoVisible = true;
+      const vm = this;
       const reader = new FileReader();
-      reader.onload = (e) => this.$emit('load', e.target.result);
-      this.$refs.myContainer.style.display = 'inline';
-      reader.readAsDataURL(obj.files[0]);
+      reader.onload = (e) => {
+        vm.videoSrc = e.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
     },
 
   },
@@ -78,7 +83,6 @@ export default {
 }
 
 #mycontainer {
-    display: none;
     background:#ccc;
     height: 0vh;
 }
