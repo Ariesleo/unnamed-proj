@@ -1,16 +1,17 @@
 <template>
-  <div class="textarea">
-    <div class="mousetrap" contenteditable="true">
-      <br /><br />
-      <p></p>
+<div>
+  <form>
+    <div class="form-group">
+      <textarea class="form-control" rows="27" id="comment"
+      placeholder="START TRANSCRIBING HERE"></textarea>
     </div>
-  </div>
+  </form>
+</div>
+
 </template>
 
 <style scoped>
-.textarea {
-  background-color: white;
-  padding: 50px;
+form {
   box-shadow: 5px 5px 15px rgba(119, 117, 117, 0.514);
   margin-top: 50px;
   display: block;
@@ -18,12 +19,16 @@
   margin-right: auto;
   width: 60%;
 }
-.textarea:hover {
+form:hover {
   transform: scale(1.01);
-  box-shadow: 2px 2px 10px rgba(92, 91, 91, 0.89);
-  transition: 0.5s ease-in;
+  box-shadow: 5px 5px 10px rgba(81, 61, 192, 0.651);
+  transition: 0.3s;
 }
-.mousetrap {
-  text-align: start;
+textarea {
+  font-size: 18px;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, Oxygen, Ubuntu, Cantarell,
+  'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 </style>

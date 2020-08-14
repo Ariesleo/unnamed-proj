@@ -31,7 +31,6 @@
       @click="openWindow"
       type="button"
       class="btn btn-primary"
-      style="margin-top: 5px; width: 230px;"
     >
       Or YouTube Video
     </button>
@@ -63,6 +62,8 @@ export default {
   margin-top: 20px;
 }
 .btn {
+  width: 230px;
+  margin-top: 5px;
   width: 230px;
 }
 .btn:hover {
